@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Richman Matric Hr. Sec. School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <style>
+        :root {
+            --sidebar-bg: #1e293b;
+            --sidebar-color: #f8fafc;
+            --sidebar-hover: #334155;
+            --primary: #2563eb;
+            --bg-color: #f1f5f9;
+        }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-color); display: flex; height: 100vh; overflow: hidden; }
+        
+        /* Sidebar */
+        .sidebar { width: 250px; background: var(--sidebar-bg); color: var(--sidebar-color); display: flex; flex-direction: column; }
+        .sidebar-brand { padding: 20px; font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid #334155; display:flex; align-items:center; gap:10px; }
+        .sidebar-menu { list-style: none; padding: 0; margin: 0; flex: 1; overflow-y: auto; }
+        .sidebar-menu li a { display: flex; align-items: center; gap: 10px; padding: 15px 20px; color: #cbd5e1; text-decoration: none; transition: 0.3s; border-left: 4px solid transparent; }
+        .sidebar-menu li a:hover, .sidebar-menu li a.active { background: var(--sidebar-hover); color: white; border-left-color: var(--primary); }
+        .sidebar-footer { padding: 20px; border-top: 1px solid #334155; }
+        .logout-btn { background: #ef4444; color: white; border: none; padding: 10px; width: 100%; border-radius: 6px; cursor: pointer; display:flex; justify-content:center; align-items:center; gap:8px; font-weight:600;}
+        
+        /* Main Content */
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .topbar { background: white; padding: 20px 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
+        .topbar h2 { margin: 0; font-size: 1.5rem; color: #0f172a; }
+        .content-area { padding: 30px; overflow-y: auto; flex: 1; }
+        
+        /* UI Components */
+        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .stat-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); display:flex; align-items:center; gap:15px; border-left: 5px solid var(--primary);}
+        .stat-card i { font-size: 3rem; color: #94a3b8; }
+        .stat-card .info h3 { margin: 0 0 5px 0; font-size: 1.8rem; color: #0f172a; }
+        .stat-card .info p { margin: 0; color: #64748b; font-size: 0.9rem; font-weight: 500;}
+        
+        .section-view { display: none; }
+        .section-view.active { display: block; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #e2e8f0; }
+        th { background: #f8fafc; font-weight: 600; color: #475569; }
+        
+        .btn { padding: 8px 16px; border-radius: 6px; border: none; font-weight: 500; cursor: pointer; color:white;}
+        .btn-primary { background: var(--primary); }
+        .btn-danger { background: #ef4444; }
+        .btn-sm { padding: 5px 10px; font-size: 0.85rem;}
+        
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; color:#475569; font-weight: 500;}
+        .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box;}
+    </style>
+</head>
+<body>
+
+    <!-- Authentication Check -->
+    <script>
+        if (localStorage.getItem('admin_logged_in') !== 'true') {
+            window.location.href = 'admin-login.html';
+        }
+    </script>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand"><i class="ph ph-planet"></i> Admin Panel</div>
+        <ul class="sidebar-menu">
+            <li><a href="#" class="nav-link active" data-target="dashboard"><i class="ph ph-squares-four"></i> Dashboard</a></li>
+            <li><a href="#" class="nav-link" data-target="academics"><i class="ph ph-books"></i> Manage Academics</a></li>
+            <li><a href="#" class="nav-link" data-target="facilities"><i class="ph ph-buildings"></i> Manage Facilities</a></li>
+            <li><a href="#" class="nav-link" data-target="sports"><i class="ph ph-soccer-ball"></i> Manage Sports</a></li>
+            <li><a href="#" class="nav-link" data-target="gallery"><i class="ph ph-image"></i> Gallery Management</a></li>
+            <li><a href="#" class="nav-link" data-target="news"><i class="ph ph-newspaper"></i> News / Events</a></li>
+            <li><a href="#" class="nav-link" data-target="messages"><i class="ph ph-envelope-simple"></i> Contact Messages</a></li>
+            <li><a href="#" class="nav-link" data-target="settings"><i class="ph ph-gear"></i> Settings</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <button class="logout-btn" onclick="logout()"><i class="ph ph-sign-out"></i> Logout</button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="topbar">
+            <h2 id="pageTitle">Dashboard Overview</h2>
+            <div>Welcome, Admin</div>
+        </header>
+
+        <section class="content-area">
+            
+            <!-- Dashboard View -->
+            <div id="dashboard" class="section-view active">
+                <div class="grid-cards">
+                    <div class="stat-card">
+                        <i class="ph ph-users"></i>
+                        <div class="info"><h3>1,250</h3><p>Total Students</p></div>
+                    </div>
+                    <div class="stat-card" style="border-left-color: #10b981;">
+                        <i class="ph ph-calendar-star"></i>
+                        <div class="info"><h3>24</h3><p>Total Events</p></div>
+                    </div>
+                    <div class="stat-card" style="border-left-color: #f59e0b;">
+                        <i class="ph ph-image"></i>
+                        <div class="info"><h3 id="galleryCount">12</h3><p>Gallery Images</p></div>
+                    </div>
+                    <div class="stat-card" style="border-left-color: #8b5cf6;">
+                        <i class="ph ph-envelope"></i>
+                        <div class="info"><h3>8</h3><p>New Messages</p></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Recent Activity</h3>
+                    <ul>
+                        <li><span style="color:var(--primary);">System</span>: Weekly backup completed successfully.</li>
+                        <li><span style="color:var(--primary);">Admin</span>: Updated Annual Sports Day news.</li>
+                        <li><span style="color:var(--primary);">User</span>: New contact message received from John Doe.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Gallery View -->
+            <div id="gallery" class="section-view">
+                <div class="card" style="margin-bottom: 20px;">
+                    <h3 style="margin-top:0;">Add Gallery Image</h3>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:15px;">
+                        <div class="form-group"><label>Photo Title</label><input type="text" id="galTitle" placeholder="e.g. Sports Day 2024"></div>
+                        <div class="form-group"><label>Category</label><input type="text" id="galCategory" placeholder="e.g. Sports"></div>
+                        <div class="form-group"><label>Image URL / Path</label><input type="text" id="galImg" placeholder="assets/photo.png"></div>
+                    </div>
+                    <button class="btn btn-primary" onclick="addGalleryItem()"><i class="ph ph-upload-simple"></i> Upload Photo</button>
+                </div>
+                <div class="card">
+                    <h3 style="margin-top:0;">Manage Gallery Images</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Preview</th>
+                                <th>Photo Title / Caption</th>
+                                <th>Category</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="galleryTableBody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- News View -->
+            <div id="news" class="section-view">
+                <div class="card" style="margin-bottom: 20px;">
+                    <h3 style="margin-top:0;">Add New Event / News</h3>
+                    <div class="form-group">
+                        <label>News Title / Description</label>
+                        <input type="text" id="newsInput" placeholder='e.g., "Annual Sports Day – May 10"'>
+                    </div>
+                    <button class="btn btn-primary" onclick="addNews()">Add News</button>
+                </div>
+                <div class="card">
+                    <h3 style="margin-top:0;">Current News</h3>
+                    <ul id="newsList" style="list-style:none; padding:0;">
+                         <!-- Populated by JS -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ACADEMICS VIEW -->
+            <div id="academics" class="section-view">
+                <div class="card" style="margin-bottom: 20px;">
+                    <h3 style="margin-top:0;">Add Academic Program</h3>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                        <div class="form-group"><label>Program Name</label><input type="text" id="acadProgram" placeholder="e.g. Primary"></div>
+                        <div class="form-group"><label>Classes Range</label><input type="text" id="acadClasses" placeholder="e.g. I–V"></div>
+                    </div>
+                    <button class="btn btn-primary" onclick="addAcademic()">Save Program</button>
+                </div>
+                <div class="card">
+                    <h3 style="margin-top:0;">Current Programs</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Program Name</th><th>Classes</th><th>Action</th></tr>
+                        </thead>
+                        <tbody id="academicsList">
+                             <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- FACILITIES VIEW -->
+            <div id="facilities" class="section-view">
+                <div class="card" style="margin-bottom: 20px;">
+                    <h3 style="margin-top:0;">Add Facility</h3>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                        <div class="form-group"><label>Facility Name</label><input type="text" id="facName"></div>
+                        <div class="form-group"><label>Description</label><input type="text" id="facDesc"></div>
+                        <div class="form-group" style="grid-column: span 2;"><label>Upload Image URL/Path</label><input type="text" id="facImg" placeholder="assets/campus_library.png"></div>
+                    </div>
+                    <button class="btn btn-primary" onclick="addFacility()">Save Facility</button>
+                </div>
+                <div class="card">
+                    <h3 style="margin-top:0;">Managed Facilities</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Image</th><th>Facility Name</th><th>Action</th></tr>
+                        </thead>
+                        <tbody id="facilitiesList">
+                             <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- SPORTS VIEW -->
+            <div id="sports" class="section-view">
+                <div class="card" style="margin-bottom: 20px;">
+                    <h3 style="margin-top:0;">Add Sports Program</h3>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                        <div class="form-group"><label>Sport Name</label><input type="text" id="sportName"></div>
+                        <div class="form-group"><label>Coach Name</label><input type="text" id="sportCoach"></div>
+                        <div class="form-group"><label>Upload Image URL/Path</label><input type="text" id="sportImg" placeholder="assets/school_football.png"></div>
+                        <div class="form-group"><label>Description</label><input type="text" id="sportDesc"></div>
+                    </div>
+                    <button class="btn btn-primary" onclick="addSport()">Save Sport</button>
+                </div>
+                <div class="card" style="margin-bottom: 30px;">
+                    <h3 style="margin-top:0;">Sports Programs</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Sport Name</th><th>Coach</th><th>Action</th></tr>
+                        </thead>
+                        <tbody id="sportsList">
+                             <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Achievements block remains below the sports list -->
+                <div class="card" style="margin-bottom: 20px;">
+                    <h3 style="margin-top:0;">Add Sports Achievement</h3>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                        <div class="form-group"><label>Tournament Name</label><input type="text" id="achTournament"></div>
+                        <div class="form-group"><label>Student Name</label><input type="text" id="achStudent"></div>
+                        <div class="form-group"><label>Medal Type</label><input type="text" id="achMedal" placeholder="Gold / Silver / Bronze"></div>
+                        <div class="form-group"><label>Year</label><input type="text" id="achYear" placeholder="2024"></div>
+                    </div>
+                    <button class="btn btn-primary" onclick="addAchievement()">Save Achievement</button>
+                </div>
+                <!-- Achievements list table -->
+                <div class="card">
+                    <h3 style="margin-top:0;">Recorded Achievements</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Year</th><th>Tournament</th><th>Student</th><th>Medal</th><th>Action</th></tr>
+                        </thead>
+                        <tbody id="achievementsList">
+                             <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SETTINGS VIEW -->
+            <div id="settings" class="section-view">
+                <div class="card" style="max-width: 600px;">
+                    <h3 style="margin-top:0;">Admin Settings</h3>
+                    <p style="color:var(--color-text-muted); margin-bottom: 20px;">Update core school details.</p>
+                    <div class="form-group">
+                        <label>School Name</label>
+                        <input type="text" value="Richman Matric Hr. Sec. School">
+                    </div>
+                    <div class="form-group">
+                        <label>School Phone</label>
+                        <input type="text" value="0416-2298345">
+                    </div>
+                    <div class="form-group">
+                        <label>School Email</label>
+                        <input type="email" value="admissions@richmanschool.edu">
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Logo</label>
+                        <input type="file" style="border:none; padding:0;">
+                    </div>
+                    <button class="btn btn-primary" onclick="alert('Demo: Settings saved successfully!')">Save Settings</button>
+                </div>
+            </div>
+            
+            <!-- Messages View -->
+            <div id="messages" class="section-view">
+                <div class="card">
+                    <h3 style="margin-top:0;">Contact Form Messages</h3>
+                    <table>
+                        <thead>
+                            <tr><th>Date</th><th>Name</th><th>Email</th><th>Message Summary</th><th>Action</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Oct 12</td><td>Sarah Jenkins</td><td>sarah@example.com</td><td>Admission inquiry for Grade 5...</td><td><button class="btn btn-primary btn-sm">Read</button></td></tr>
+                            <tr><td>Oct 11</td><td>Mike Ross</td><td>mike.r@example.com</td><td>Question about transport options...</td><td><button class="btn btn-primary btn-sm">Read</button></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Admin Panel Logic -->
+    <script>
+        // --- API Base URL ---
+        const API_BASE = '/api';
+
+        // --- Data State ---
+        let mockGallery = [];
+        let mockNews = [];
+        let mockAchievements = [];
+        let mockAcademics = [];
+        let mockFacilities = [];
+        let mockSports = [];
+
+        // --- Fetch Helper ---
+        async function fetchData(section) {
+            try {
+                const response = await fetch(`${API_BASE}/${section}`);
+                return await response.json();
+            } catch (err) {
+                console.error(`Error fetching ${section}:`, err);
+                return [];
+            }
+        }
+
+        async function postData(section, data) {
+            try {
+                const response = await fetch(`${API_BASE}/${section}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                return await response.json();
+            } catch (err) {
+                console.error(`Error posting ${section}:`, err);
+            }
+        }
+
+        async function deleteData(section, id) {
+            try {
+                await fetch(`${API_BASE}/${section}/${id}`, { method: 'DELETE' });
+                return true;
+            } catch (err) {
+                console.error(`Error deleting ${section}:`, err);
+                return false;
+            }
+        }
+
+        // --- Navigation Logic ---
+        const links = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section-view');
+        const pageTitle = document.getElementById('pageTitle');
+
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                links.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                const targetId = link.getAttribute('data-target');
+                sections.forEach(sec => sec.classList.remove('active'));
+                document.getElementById(targetId).classList.add('active');
+                
+                pageTitle.innerText = link.innerText;
+            });
+        });
+
+        // --- Render Functions ---
+        async function renderGallery() {
+            mockGallery = await fetchData('gallery');
+            const tbody = document.getElementById('galleryTableBody');
+            tbody.innerHTML = '';
+            mockGallery.forEach(item => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><img src="${item.img}" style="width: 80px; height: 50px; object-fit: cover; border-radius:4px;"></td>
+                        <td>${item.title}</td>
+                        <td><span style="background:#e2e8f0; padding:4px 8px; border-radius:12px; font-size:0.8rem;">${item.category}</span></td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" onclick="editItem('gallery', ${item.id})">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteItem('gallery', ${item.id})">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            document.getElementById('galleryCount').innerText = mockGallery.length;
+        }
+
+        async function addGalleryItem() {
+            const title = document.getElementById('galTitle').value;
+            const category = document.getElementById('galCategory').value;
+            const img = document.getElementById('galImg').value || 'assets/placeholder.png';
+            if(title && category) {
+                await postData('gallery', { title, category, img });
+                alert('Gallery image added successfully!');
+                document.getElementById('galTitle').value = '';
+                document.getElementById('galCategory').value = '';
+                document.getElementById('galImg').value = '';
+                renderGallery();
+            } else {
+                alert('Please fill in the Photo Title and Category!');
+            }
+        }
+
+        async function renderNews() {
+            mockNews = await fetchData('news');
+            const list = document.getElementById('newsList');
+            list.innerHTML = '';
+            mockNews.forEach(item => {
+                list.innerHTML += `
+                    <li style="padding:15px; border:1px solid #e2e8f0; margin-bottom:10px; border-radius:8px; display:flex; justify-content:space-between; align-items:center;">
+                        <span>${item.text}</span>
+                        <div>
+                            <button class="btn btn-primary btn-sm" onclick="editItem('news', ${item.id})">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteItem('news', ${item.id})">Delete</button>
+                        </div>
+                    </li>
+                `;
+            });
+        }
+
+        async function addNews() {
+            const input = document.getElementById('newsInput');
+            if(input.value.trim() !== '') {
+                await postData('news', { text: input.value });
+                alert('News added successfully!');
+                input.value = '';
+                renderNews();
+            } else {
+                alert('Please enter some news text first!');
+            }
+        }
+
+        async function renderAchievements() {
+            mockAchievements = await fetchData('achievements');
+            const tbody = document.getElementById('achievementsList');
+            tbody.innerHTML = '';
+            mockAchievements.forEach(item => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${item.year}</td>
+                        <td>${item.tournament}</td>
+                        <td>${item.student}</td>
+                        <td><span style="color:#d97706; font-weight:bold;">${item.medal}</span></td>
+                        <td><button class="btn btn-danger btn-sm" onclick="deleteItem('achievements', ${item.id})">Delete</button></td>
+                    </tr>
+                `;
+            });
+        }
+
+        async function addAchievement() {
+            const t = document.getElementById('achTournament').value;
+            const s = document.getElementById('achStudent').value;
+            const m = document.getElementById('achMedal').value;
+            const y = document.getElementById('achYear').value;
+            if(t && s && m && y) {
+                await postData('achievements', { tournament: t, student: s, medal: m, year: y });
+                document.getElementById('achTournament').value = '';
+                document.getElementById('achStudent').value = '';
+                document.getElementById('achMedal').value = '';
+                document.getElementById('achYear').value = '';
+                renderAchievements();
+            }
+        }
+
+        async function renderAcademics() {
+            mockAcademics = await fetchData('academics');
+            const tbody = document.getElementById('academicsList');
+            tbody.innerHTML = '';
+            mockAcademics.forEach(item => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td style="font-weight:600;">${item.program}</td>
+                        <td>${item.classes}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" onclick="editItem('academics', ${item.id})">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteItem('academics', ${item.id})">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        async function addAcademic() {
+            const p = document.getElementById('acadProgram').value;
+            const c = document.getElementById('acadClasses').value;
+            if(p && c) {
+                await postData('academics', { program: p, classes: c });
+                document.getElementById('acadProgram').value = '';
+                document.getElementById('acadClasses').value = '';
+                renderAcademics();
+            }
+        }
+
+        async function renderFacilities() {
+            mockFacilities = await fetchData('facilities');
+            const tbody = document.getElementById('facilitiesList');
+            tbody.innerHTML = '';
+            mockFacilities.forEach(item => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><img src="${item.img}" style="width: 60px; height: 40px; object-fit: cover; border-radius:4px;" onerror="this.src='https://via.placeholder.com/60x40?text=IMG'"></td>
+                        <td style="font-weight:600;">${item.name}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" onclick="editItem('facilities', ${item.id})">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteItem('facilities', ${item.id})">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        async function addFacility() {
+            const n = document.getElementById('facName').value;
+            const i = document.getElementById('facImg').value || 'https://via.placeholder.com/60x40?text=IMG';
+            if(n) {
+                await postData('facilities', { name: n, img: i });
+                document.getElementById('facName').value = '';
+                document.getElementById('facImg').value = '';
+                document.getElementById('facDesc').value = '';
+                renderFacilities();
+            }
+        }
+
+        async function renderSports() {
+            mockSports = await fetchData('sports');
+            const tbody = document.getElementById('sportsList');
+            tbody.innerHTML = '';
+            mockSports.forEach(item => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td style="font-weight:600;"><img src="${item.img}" style="width: 30px; height: 30px; object-fit: cover; border-radius:50%; vertical-align:middle; margin-right:10px;" onerror="this.style.display='none'"> ${item.name}</td>
+                        <td>${item.coach}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" onclick="editItem('sports', ${item.id})">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteItem('sports', ${item.id})">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        async function addSport() {
+            const n = document.getElementById('sportName').value;
+            const c = document.getElementById('sportCoach').value;
+            const i = document.getElementById('sportImg').value || '';
+            if(n && c) {
+                await postData('sports', { name: n, coach: c, img: i });
+                document.getElementById('sportName').value = '';
+                document.getElementById('sportCoach').value = '';
+                document.getElementById('sportImg').value = '';
+                document.getElementById('sportDesc').value = '';
+                renderSports();
+            }
+        }
+
+        // Generic List Actions
+        async function deleteItem(type, id) {
+            if(confirm('Are you sure you want to delete this item?')) {
+                const success = await deleteData(type, id);
+                if (success) {
+                    if(type === 'gallery') renderGallery();
+                    if(type === 'news') renderNews();
+                    if(type === 'achievements') renderAchievements();
+                    if(type === 'academics') renderAcademics();
+                    if(type === 'facilities') renderFacilities();
+                    if(type === 'sports') renderSports();
+                }
+            }
+        }
+
+        async function editItem(type, id) {
+            let items = [];
+            if(type === 'gallery') items = mockGallery;
+            if(type === 'news') items = mockNews;
+            if(type === 'academics') items = mockAcademics;
+            if(type === 'facilities') items = mockFacilities;
+            if(type === 'sports') items = mockSports;
+
+            const item = items.find(i => i.id === id);
+            const newVal = prompt("Edit item name/title:", item.title || item.text || item.program || item.name || item.coach);
+            
+            if(newVal) {
+                const body = {};
+                if(item.title !== undefined) body.title = newVal;
+                else if(item.text !== undefined) body.text = newVal;
+                else if(item.program !== undefined) body.program = newVal;
+                else if(item.name !== undefined) body.name = newVal;
+                else if(item.coach !== undefined) body.coach = newVal;
+
+                await fetch(`${API_BASE}/${type}/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+                
+                if(type === 'gallery') renderGallery();
+                if(type === 'news') renderNews();
+                if(type === 'academics') renderAcademics();
+                if(type === 'facilities') renderFacilities();
+                if(type === 'sports') renderSports();
+            }
+        }
+
+        // Logout
+        function logout() {
+            localStorage.removeItem('admin_logged_in');
+            localStorage.removeItem('admin_token');
+            window.location.href = 'index.html';
+        }
+
+        // Expose functions to window for global access from onclick
+        window.addGalleryItem = addGalleryItem;
+        window.addNews = addNews;
+        window.addAchievement = addAchievement;
+        window.addAcademic = addAcademic;
+        window.addFacility = addFacility;
+        window.addSport = addSport;
+        window.deleteItem = deleteItem;
+        window.editItem = editItem;
+        window.logout = logout;
+
+        // Init All Renders
+        renderGallery();
+        renderNews();
+        renderAchievements();
+        renderAcademics();
+        renderFacilities();
+        renderSports();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics - Richman Matric Hr. Sec. School</title>
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header { background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); color: white; padding: 100px 0 60px; text-align: center; margin-bottom: 60px; }
+        .page-header h1 { color: white; font-size: 3.5rem; margin-bottom: 15px; }
+        .page-header p { max-width: 700px; margin: 0 auto; font-size: 1.2rem; opacity: 0.9; line-height: 1.6; }
+        
+        .timeline { position: relative; max-width: 800px; margin: 0 auto 60px; padding: 20px 0; }
+        .timeline::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 4px; height: 100%; background: var(--color-accent); opacity: 0.3; border-radius: 2px; }
+        
+        .timeline-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; position: relative; width: 100%; }
+        .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+        
+        .timeline-marker { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 24px; height: 24px; border-radius: 50%; background: var(--color-accent); border: 4px solid white; box-shadow: var(--shadow-md); z-index: 10; }
+        
+        .timeline-content { width: 45%; background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-md); position: relative; border-left: 4px solid var(--color-accent); }
+        .timeline-item:nth-child(even) .timeline-content { border-left: none; border-right: 4px solid var(--color-accent); text-align: right; }
+        
+        .timeline-content h4 { font-size: 1.4rem; color: var(--color-primary); margin-bottom: 5px; }
+        .timeline-content .classes { display: inline-block; background: #fffbeb; color: var(--color-accent); font-weight: 700; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; margin-bottom: 15px; }
+        .timeline-content p { color: var(--color-text-muted); line-height: 1.6; }
+        
+        .groups-list { margin-top: 15px; list-style: none; padding: 0; display:flex; flex-wrap:wrap; gap: 10px; }
+        .timeline-item:nth-child(even) .groups-list { justify-content: flex-end; }
+        .groups-list li { background: var(--color-bg-body); padding: 5px 15px; border-radius: 30px; font-size: 0.9rem; font-weight: 500; border: 1px solid #e2e8f0; }
+        
+        @media (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .timeline-item, .timeline-item:nth-child(even) { flex-direction: column; align-items: flex-end; }
+            .timeline-marker { left: 20px; }
+            .timeline-content { width: calc(100% - 50px); border-left: 4px solid var(--color-accent) !important; border-right: none !important; text-align: left !important; }
+            .timeline-item:nth-child(even) .groups-list { justify-content: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+
+        <nav class="navbar" id="navbar">
+            <div class="container nav-inner">
+                 <div style="font-family:'Outfit'; font-weight:800; font-size:1.5rem; color:var(--color-primary); display:flex; align-items:center; gap:10px;">
+                    <i class="ph ph-planet"></i> RICHMAN MATRIC HR. SEC. SCHOOL
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="academics.html" class="active">ACADEMICS</a></li>
+                    <li><a href="sports.html">SPORTS</a></li>
+                    <li><a href="facilities.html">FACILITIES</a></li>
+                    <li><a href="gallery.html">GALLERY</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <header class="page-header" style="background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(15,23,42,0.8)), url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=2000') center/cover;">
+            <div class="container relative reveal active">
+                <h1>Academic Programs</h1>
+                <p>Our academic curriculum focuses on building strong foundations in education while encouraging creativity, discipline, and critical thinking.</p>
+            </div>
+        </header>
+
+        <main class="container mb-lg">
+            
+            <div class="timeline reveal">
+                <!-- Primary -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4>Primary Section</h4>
+                        <div class="classes">Classes I – V</div>
+                        <p>The primary section focuses on basic literacy, numeracy, and communication skills through activity-based learning methods.</p>
+                    </div>
+                </div>
+
+                <!-- Middle -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4>Middle School</h4>
+                        <div class="classes">Classes VI – VIII</div>
+                        <p>Middle school education strengthens students’ understanding of subjects such as Mathematics, Science, and Languages while promoting curiosity and creativity.</p>
+                    </div>
+                </div>
+
+                <!-- High School -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4>High School</h4>
+                        <div class="classes">Classes IX – X</div>
+                        <p>Students are prepared for SSLC board examinations with structured teaching methods, regular assessments, and practical learning.</p>
+                    </div>
+                </div>
+
+                <!-- Higher Secondary -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h4>Higher Secondary</h4>
+                        <div class="classes">Classes XI – XII</div>
+                        <p>Our higher secondary programs help students prepare for higher education and future career opportunities. Available Groups:</p>
+                        <ul class="groups-list">
+                            <li>🔬 Biology</li>
+                            <li>💻 Computer Science</li>
+                            <li>📈 Commerce</li>
+                            <li>📐 Mathematics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="footer">
+            <div class="container footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-icon white"><i class="ph ph-planet"></i></div>
+                    <h3>Richman Matric Hr. Sec. School</h3>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Richman Matric Hr. Sec. School.
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

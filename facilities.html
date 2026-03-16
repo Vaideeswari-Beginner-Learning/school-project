@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facilities - Richman Matric Hr. Sec. School</title>
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header { background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); color: white; padding: 100px 0 60px; text-align: center; margin-bottom: 60px; }
+        .page-header h1 { color: white; font-size: 3.5rem; margin-bottom: 15px; }
+        .page-header p { max-width: 700px; margin: 0 auto; font-size: 1.2rem; opacity: 0.9; line-height: 1.6; }
+        
+        .facilities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .facility-card { background: white; padding: 40px 30px; border-radius: 12px; box-shadow: var(--shadow-md); transition: var(--transition-smooth); text-align: center; border-bottom: 4px solid transparent; }
+        .facility-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border-color: var(--color-accent); }
+        .fac-icon-large { width: 80px; height: 80px; background: #fffbeb; color: var(--color-accent); font-size: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 20px; }
+        .facility-card h4 { font-size: 1.5rem; margin-bottom: 15px; }
+        .facility-card p { color: var(--color-text-muted); font-size: 1rem; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+
+        <nav class="navbar" id="navbar">
+            <div class="container nav-inner">
+                 <div style="font-family:'Outfit'; font-weight:800; font-size:1.5rem; color:var(--color-primary); display:flex; align-items:center; gap:10px;">
+                    <i class="ph ph-planet"></i> RICHMAN MATRIC HR. SEC. SCHOOL
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="academics.html">ACADEMICS</a></li>
+                    <li><a href="sports.html">SPORTS</a></li>
+                    <li><a href="facilities.html" class="active">FACILITIES</a></li>
+                    <li><a href="gallery.html">GALLERY</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <header class="page-header" style="background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(15,23,42,0.8)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=2000') center/cover;">
+            <div class="container relative reveal active">
+                <h1>Our Facilities</h1>
+                <p>Our school provides a safe and well-equipped environment to support students in both academic learning and physical development.</p>
+            </div>
+        </header>
+
+        <main class="container mb-lg">
+            
+            <div class="facilities-grid reveal">
+                <!-- Library -->
+                <div class="facility-card">
+                    <div class="fac-icon-large"><i class="ph ph-books"></i></div>
+                    <h4>Library</h4>
+                    <p>Our school library provides a wide collection of books, reference materials, and educational magazines that encourage students to develop reading habits and improve their knowledge.</p>
+                </div>
+
+                <!-- Computer Lab -->
+                <div class="facility-card">
+                    <div class="fac-icon-large"><i class="ph ph-desktop"></i></div>
+                    <h4>Computer Lab</h4>
+                    <p>The computer lab is equipped with modern computers and internet facilities to help students learn basic computer skills and technology.</p>
+                </div>
+
+                <!-- Science Lab -->
+                <div class="facility-card">
+                    <div class="fac-icon-large"><i class="ph ph-flask"></i></div>
+                    <h4>Science Laboratory</h4>
+                    <p>Separate laboratories for Physics, Chemistry, and Biology allow students to perform practical experiments and understand scientific concepts effectively.</p>
+                </div>
+
+                <!-- Smart Classrooms -->
+                <div class="facility-card">
+                    <div class="fac-icon-large"><i class="ph ph-monitor-play"></i></div>
+                    <h4>Smart Classrooms</h4>
+                    <p>Digital smart boards and multimedia tools make learning interactive and engaging for students.</p>
+                </div>
+
+                <!-- Sports Playground -->
+                <div class="facility-card">
+                    <div class="fac-icon-large"><i class="ph ph-soccer-ball"></i></div>
+                    <h4>Sports Playground</h4>
+                    <p>A spacious playground supports sports activities like cricket, football, athletics, volleyball, and badminton.</p>
+                </div>
+
+                <!-- Transport -->
+                <div class="facility-card">
+                    <div class="fac-icon-large"><i class="ph ph-bus"></i></div>
+                    <h4>Transport Facility</h4>
+                    <p>Our school transport system provides safe and reliable bus services covering nearby areas.</p>
+                </div>
+
+                <!-- Safety -->
+                <div class="facility-card">
+                    <div class="fac-icon-large"><i class="ph ph-shield-check"></i></div>
+                    <h4>Safety & Security</h4>
+                    <p>The campus is monitored through CCTV cameras and managed with proper safety measures to ensure a secure environment for students.</p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="footer">
+            <div class="container footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-icon white"><i class="ph ph-planet"></i></div>
+                    <h3>Richman Matric Hr. Sec. School</h3>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Richman Matric Hr. Sec. School.
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

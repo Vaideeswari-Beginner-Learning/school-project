@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "img": "assets/gallery_sports_day.png",
+    "title": "Sports Day 2024",
+    "category": "Sports"
+  },
+  {
+    "id": 3,
+    "img": "assets/campus_classroom.png",
+    "title": "Interactive Science Class",
+    "category": "Academics"
+  },
+  {
+    "id": 4,
+    "img": "assets/campus_graduation.png",
+    "title": "Class of 2025 Graduation",
+    "category": "Campus Life"
+  },
+  {
+    "id": 1773652815154,
+    "title": "Class",
+    "category": "Campus",
+    "img": "https://www.iitk.ac.in/campusschool/images/slider/slider-05.jpg"
+  }
+]

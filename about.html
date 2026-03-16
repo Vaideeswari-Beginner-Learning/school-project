@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Richman Matric Hr. Sec. School</title>
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header { background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); color: white; padding: 100px 0 60px; text-align: center; margin-bottom: 60px; }
+        .page-header h1 { color: white; font-size: 3.5rem; margin-bottom: 15px; }
+        .history-section { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.1rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin: 40px 0; }
+        .info-card { background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow-md); border-top: 4px solid var(--color-accent); transition: transform 0.3s; }
+        .info-card:hover { transform: translateY(-5px); }
+        .info-card h4 { margin-top: 15px; font-size: 1.5rem; }
+        .team-member { text-align: center; }
+        .team-member img { width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 15px; object-fit: cover; box-shadow: var(--shadow-sm); }
+    </style>
+</head>
+<body>
+
+    <!-- Main App Container -->
+    <div class="app-container">
+
+        <!-- Navigation Bar -->
+        <nav class="navbar" id="navbar">
+            <div class="container nav-inner">
+                <div style="font-family:'Outfit'; font-weight:800; font-size:1.5rem; color:var(--color-primary); display:flex; align-items:center; gap:10px;">
+                    <i class="ph ph-planet"></i> RICHMAN MATRIC HR. SEC. SCHOOL
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html" class="active">ABOUT</a></li>
+                    <li><a href="academics.html">ACADEMICS</a></li>
+                    <li><a href="sports.html">SPORTS</a></li>
+                    <li><a href="facilities.html">FACILITIES</a></li>
+                    <li><a href="gallery.html">GALLERY</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <header class="page-header">
+            <div class="container relative">
+                <h1 class="animate-up">About Richman Matric Hr. Sec. School</h1>
+                <p class="animate-up delay-1" style="font-size:1.2rem; opacity:0.9;">Shaping the leaders of tomorrow since 1990.</p>
+            </div>
+        </header>
+
+        <main class="container mb-lg">
+            
+            <!-- Welcome / History -->
+            <section class="history-section reveal mb-lg text-center">
+                <h2 style="font-size:2.5rem; margin-bottom: 20px;">Our History</h2>
+                <div style="width:60px; height:4px; background:var(--color-accent); margin:0 auto 20px;"></div>
+                <p>Founded in 1990, Richman Matric Hr. Sec. School began with a simple yet profound vision: to provide a holistic education that balances rigorous academics with elite sports and cutting-edge science. Over the last three decades, we have grown from a small institution to a sprawling state-of-the-art campus.</p>
+            </section>
+
+            <!-- Vision, Mission, Management -->
+            <section class="grid-3 reveal">
+                <div class="info-card">
+                    <i class="ph ph-eye" style="font-size: 40px; color:var(--color-primary);"></i>
+                    <h4>Vision</h4>
+                    <p style="margin-top:15px; color:var(--color-text-muted);">To foster a culture of inquiry, physical excellence, and global citizenship, inspiring students to reach for the stars.</p>
+                </div>
+                <div class="info-card">
+                    <i class="ph ph-target" style="font-size: 40px; color:var(--color-primary);"></i>
+                    <h4>Mission</h4>
+                    <p style="margin-top:15px; color:var(--color-text-muted);">To provide world-class facilities and expert mentorship in both the classroom and the sports field.</p>
+                </div>
+                <div class="info-card">
+                    <i class="ph ph-users-three" style="font-size: 40px; color:var(--color-primary);"></i>
+                    <h4>Management</h4>
+                    <p style="margin-top:15px; color:var(--color-text-muted);">Governed by a board of seasoned educators, sports administrators, and former scientists dedicated to student welfare.</p>
+                </div>
+            </section>
+
+            <!-- Campus Information & Facilities -->
+            <section class="grid-layout mt-lg reveal" style="grid-template-columns: 1fr 1fr; gap:60px; align-items:center;">
+                <div>
+                    <img src="assets/school_playground.png" alt="Campus Building" style="border-radius:12px; box-shadow:var(--shadow-lg);">
+                </div>
+                <div>
+                    <h3 style="font-size: 2.2rem; margin-bottom: 20px;">Campus Information & Facilities</h3>
+                    <p style="margin-bottom:20px; font-size:1.1rem; color:var(--color-text-muted);">Our 50-acre eco-friendly campus is designed to stimulate learning and physical activity. It features modern infrastructure designed specifically for multi-disciplinary education.</p>
+                    <ul style="display:flex; flex-direction:column; gap:12px; font-weight:600;">
+                        <li><i class="ph ph-check-circle" style="color:var(--color-accent); font-size:20px; vertical-align:middle; margin-right:8px;"></i> Smart Classrooms with Interactive Flat Panels</li>
+                        <li><i class="ph ph-check-circle" style="color:var(--color-accent); font-size:20px; vertical-align:middle; margin-right:8px;"></i> Planetarium & Astronomy Lab</li>
+                        <li><i class="ph ph-check-circle" style="color:var(--color-accent); font-size:20px; vertical-align:middle; margin-right:8px;"></i> Olympic Sized Athletic Track & Pool</li>
+                        <li><i class="ph ph-check-circle" style="color:var(--color-accent); font-size:20px; vertical-align:middle; margin-right:8px;"></i> Central Library & 24/7 Med-Bay</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Digital Infrastructure & Security -->
+            <section class="mt-lg reveal">
+                <div class="text-center" style="text-align: center;">
+                    <h3 style="font-size: 2.2rem; margin-bottom: 20px;">Digital Infrastructure & Security</h3>
+                    <div style="width:60px; height:4px; background:var(--color-accent); margin:0 auto 40px;"></div>
+                </div>
+                
+                <div class="grid-3">
+                    <div class="info-card">
+                        <i class="ph ph-shield-check" style="font-size: 40px; color:var(--color-primary);"></i>
+                        <h4>Data Security</h4>
+                        <p style="margin-top:15px; color:var(--color-text-muted);">We employ industry-standard encryption protocols to ensure that all sensitive student and staff information remains completely secure.</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="ph ph-lock-key" style="font-size: 40px; color:var(--color-primary);"></i>
+                        <h4>Controlled Access</h4>
+                        <p style="margin-top:15px; color:var(--color-text-muted);">Role-based access controls guarantee that only authorized personnel can view or modify administrative and academic records.</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="ph ph-database" style="font-size: 40px; color:var(--color-primary);"></i>
+                        <h4>Proper Storage of Information</h4>
+                        <p style="margin-top:15px; color:var(--color-text-muted);">All data is stored in secure, redundant cloud servers with regular backups to prevent any loss of critical educational information.</p>
+                    </div>
+                </div>
+                
+                <div style="background: white; padding: 40px; border-radius: 12px; box-shadow: var(--shadow-md); margin-top: 40px; border-left: 5px solid var(--color-primary);">
+                    <h4 style="font-size: 1.5rem; margin-bottom: 15px;">Robust Backend Management / Conclusion</h4>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text-muted);">
+                        Backend is used to manage dynamic features of the website such as contact forms, admission applications, student data, and administrative updates. It helps store and process information securely while allowing the school management to control and update website content easily.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Teachers / Faculty -->
+            <section class="mt-lg reveal text-center">
+                <h3 style="font-size: 2.2rem; margin-bottom: 20px;">Master Teachers</h3>
+                <div style="width:60px; height:4px; background:var(--color-accent); margin:0 auto 40px;"></div>
+                
+                <div class="grid-3" style="grid-template-columns: repeat(4, 1fr);">
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300" alt="Principal">
+                        <h5 style="font-size:1.2rem;">Dr. Sarah Chen</h5>
+                        <p style="color:var(--color-text-muted);">Principal / Physics</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=300" alt="Director">
+                        <h5 style="font-size:1.2rem;">Mr. John Smith</h5>
+                        <p style="color:var(--color-text-muted);">Director of Athletics</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&q=80&w=300" alt="Teacher">
+                        <h5 style="font-size:1.2rem;">Ms. Anita Roy</h5>
+                        <p style="color:var(--color-text-muted);">Head of Sciences</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&q=80&w=300" alt="Coach">
+                        <h5 style="font-size:1.2rem;">Coach David</h5>
+                        <p style="color:var(--color-text-muted);">Head Football Coach</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-icon white"><i class="ph ph-planet"></i></div>
+                    <h3>Richman Matric Hr. Sec. School</h3>
+                    <p>Educate. Empower. Enlighten.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Richman Matric Hr. Sec. School. All Rights Reserved.
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
