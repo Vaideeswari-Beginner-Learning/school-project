@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/phosphor-icons"></script>
     <link rel="stylesheet" href="styles.css">
+    <script src="config.js"></script>
 </head>
 <body>
 
@@ -95,7 +96,7 @@
                 <!-- Contact Form -->
                 <div class="contact-form">
                     <h3>Send us a Message</h3>
-                    <form onsubmit="event.preventDefault(); alert('Message Sent Successfully!');">
+                    <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" class="form-control" placeholder="Your full name" required>
@@ -114,6 +115,44 @@
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%; justify-content:center; margin-top: 10px;">Send Message</button>
                     </form>
+                    <script>
+                        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+                            e.preventDefault();
+                            const submitBtn = e.target.querySelector('button');
+                            submitBtn.disabled = true;
+                            submitBtn.innerText = 'Sending...';
+
+                            const messageData = {
+                                name: document.getElementById('name').value,
+                                phone: document.getElementById('phone').value,
+                                email: document.getElementById('email').value,
+                                message: document.getElementById('message').value,
+                                date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+                                status: 'unread'
+                            };
+
+                            try {
+                                const response = await fetch(`${CONFIG.API_BASE}/messages`, {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify(messageData)
+                                });
+
+                                if (response.ok) {
+                                    alert('Thank you! Your message has been sent successfully.');
+                                    e.target.reset();
+                                } else {
+                                    throw new Error('Failed to send message');
+                                }
+                            } catch (error) {
+                                console.error('Error submitting form:', error);
+                                alert('Sorry, there was an error sending your message. Please try again later.');
+                            } finally {
+                                submitBtn.disabled = false;
+                                submitBtn.innerText = 'Send Message';
+                            }
+                        });
+                    </script>
                 </div>
             </div>
 

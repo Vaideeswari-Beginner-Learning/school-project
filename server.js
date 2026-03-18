@@ -60,7 +60,7 @@ app.post('/api/login', (req, res) => {
 });
 
 // Generic CRUD for our sections
-const sections = ['gallery', 'news', 'academics', 'facilities', 'sports', 'achievements'];
+const sections = ['gallery', 'news', 'academics', 'facilities', 'sports', 'achievements', 'messages'];
 
 sections.forEach(section => {
     // Get all
@@ -115,6 +115,12 @@ const seedData = () => {
         saveData('news', [
             { id: 1, text: 'Annual Sports Day – May 10th. All students must participate.' },
             { id: 2, text: 'Final Term Exams begin on June 1st. Check portal for timetable.' }
+        ]);
+    }
+    if (readData('messages').length === 0) {
+        saveData('messages', [
+            { id: 1, date: 'Oct 12', name: 'Sarah Jenkins', email: 'sarah@example.com', message: 'Admission inquiry for Grade 5.', status: 'unread' },
+            { id: 2, date: 'Oct 11', name: 'Mike Ross', email: 'mike.r@example.com', message: 'Question about transport options.', status: 'unread' }
         ]);
     }
 };
