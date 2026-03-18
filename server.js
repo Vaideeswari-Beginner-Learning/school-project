@@ -18,6 +18,11 @@ app.use((req, res, next) => {
 // Serve frontend files
 app.use(express.static(__dirname));
 
+// Route for root to serve index.html explicitly
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // Path to our mock database (JSON files)
 const DATA_DIR = path.join(__dirname, 'data');
 if (!fs.existsSync(DATA_DIR)) {
@@ -115,6 +120,10 @@ const seedData = () => {
 };
 seedData();
 
-app.listen(PORT, () => {
-    console.log(`Backend server running on http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`Backend server running on http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;

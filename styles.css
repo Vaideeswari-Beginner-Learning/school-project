@@ -313,3 +313,91 @@ img { max-width: 100%; height: auto; display: block; }
     .hero-actions .btn { width: 100%; }
     .stats-strip { grid-template-columns: 1fr; }
 }
+
+/* Admin Dashboard Specific Styles */
+.admin-body { display: flex; height: 100vh; overflow: hidden; background: #f1f5f9; }
+
+.sidebar {
+    width: 250px;
+    background: #1e293b;
+    color: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+    z-index: 1001;
+}
+
+.sidebar-brand {
+    padding: 20px;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    border-bottom: 1px solid #334155;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.sidebar-close { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+.sidebar-menu { list-style: none; padding: 0; margin: 0; flex: 1; overflow-y: auto; }
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 20px;
+    color: #cbd5e1;
+    transition: 0.3s;
+    border-left: 4px solid transparent;
+}
+.sidebar-menu li a:hover, .sidebar-menu li a.active {
+    background: #334155;
+    color: white;
+    border-left-color: var(--color-accent);
+}
+
+.sidebar-footer { padding: 20px; border-top: 1px solid #334155; }
+.logout-btn {
+    background: var(--color-danger);
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.admin-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.admin-topbar {
+    background: white;
+    padding: 15px 30px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+}
+
+.topbar-left { display: flex; align-items: center; gap: 15px; }
+.menu-open { display: none; background: none; border: none; font-size: 1.75rem; color: #1e293b; cursor: pointer; }
+
+.admin-content { padding: 2rem; overflow-y: auto; flex: 1; }
+
+/* Admin Responsive */
+@media (max-width: 1024px) {
+    .sidebar { position: fixed; left: -250px; height: 100%; }
+    .sidebar.active { left: 0; }
+    .sidebar-close { display: block; }
+    .menu-open { display: block; }
+    .admin-topbar { padding: 15px; }
+}
+
+@media (max-width: 640px) {
+    .admin-content { padding: 1rem; }
+}

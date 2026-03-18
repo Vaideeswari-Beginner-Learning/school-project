@@ -83,12 +83,8 @@
         </div>
     </aside>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <header class="topbar">
-            <h2 id="pageTitle">Dashboard Overview</h2>
-            <div>Welcome, Admin</div>
-        </header>
+        </section>
+    </main>
 
         <section class="content-area">
             
@@ -629,6 +625,28 @@
         window.deleteItem = deleteItem;
         window.editItem = editItem;
         window.logout = logout;
+
+        // --- Sidebar Logic ---
+        const sidebar = document.getElementById('sidebar');
+        const menuOpen = document.getElementById('menu-open');
+        const sidebarClose = document.getElementById('sidebar-close');
+
+        menuOpen.addEventListener('click', () => {
+            sidebar.classList.add('active');
+        });
+
+        sidebarClose.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+        });
+
+        // Close sidebar on link click (mobile)
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) {
+                    sidebar.classList.remove('active');
+                }
+            });
+        });
 
         // Init All Renders
         renderGallery();
