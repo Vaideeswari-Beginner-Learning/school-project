@@ -8,18 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/phosphor-icons"></script>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .page-header { background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); color: white; padding: 100px 0 60px; text-align: center; margin-bottom: 60px; }
-        .page-header h1 { color: white; font-size: 3.5rem; margin-bottom: 15px; }
-        .page-header p { max-width: 700px; margin: 0 auto; font-size: 1.2rem; opacity: 0.9; line-height: 1.6; }
-        
-        .facilities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
-        .facility-card { background: white; padding: 40px 30px; border-radius: 12px; box-shadow: var(--shadow-md); transition: var(--transition-smooth); text-align: center; border-bottom: 4px solid transparent; }
-        .facility-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border-color: var(--color-accent); }
-        .fac-icon-large { width: 80px; height: 80px; background: #fffbeb; color: var(--color-accent); font-size: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 20px; }
-        .facility-card h4 { font-size: 1.5rem; margin-bottom: 15px; }
-        .facility-card p { color: var(--color-text-muted); font-size: 1rem; line-height: 1.6; }
-    </style>
 </head>
 <body>
 
@@ -27,9 +15,16 @@
 
         <nav class="navbar" id="navbar">
             <div class="container nav-inner">
-                 <div style="font-family:'Outfit'; font-weight:800; font-size:1.5rem; color:var(--color-primary); display:flex; align-items:center; gap:10px;">
+                <a href="index.html" class="nav-brand">
                     <i class="ph ph-planet"></i> RICHMAN MATRIC HR. SEC. SCHOOL
-                </div>
+                </a>
+
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
                 <ul class="nav-links">
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="about.html">ABOUT</a></li>

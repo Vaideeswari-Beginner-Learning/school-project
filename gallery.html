@@ -8,16 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/phosphor-icons"></script>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .page-header { background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); color: white; padding: 100px 0 60px; text-align: center; margin-bottom: 60px; }
-        .page-header h1 { color: white; font-size: 3.5rem; margin-bottom: 15px; }
-        .full-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .full-gallery img { width: 100%; height: 300px; object-fit: cover; border-radius: 12px; transition: transform 0.4s; cursor: pointer; }
-        .full-gallery img:hover { transform: scale(1.05); box-shadow: var(--shadow-xl); z-index: 10; position:relative; }
-        .filter-btns { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
-        .filter-btn { padding: 8px 20px; border-radius: 20px; border: 2px solid var(--color-primary); background: transparent; color: var(--color-primary); font-weight: 600; cursor: pointer; transition: 0.3s; }
-        .filter-btn.active, .filter-btn:hover { background: var(--color-primary); color: white; }
-    </style>
 </head>
 <body>
 
@@ -25,9 +15,16 @@
 
         <nav class="navbar" id="navbar">
             <div class="container nav-inner">
-                 <div style="font-family:'Outfit'; font-weight:800; font-size:1.5rem; color:var(--color-primary); display:flex; align-items:center; gap:10px;">
+                 <a href="index.html" class="nav-brand">
                     <i class="ph ph-planet"></i> RICHMAN MATRIC HR. SEC. SCHOOL
-                </div>
+                </a>
+
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
                 <ul class="nav-links">
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="about.html">ABOUT</a></li>
