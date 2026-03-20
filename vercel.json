@@ -1,4 +1,7 @@
 {
+  "buildCommand": "echo 'Framework Preset Override'",
+  "installCommand": "echo 'No install needed'",
+  "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false
 }
