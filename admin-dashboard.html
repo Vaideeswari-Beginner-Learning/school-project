@@ -19,17 +19,15 @@
     </script>
 
     <main class="admin-main">
-        <header class="admin-topbar">
-            <div class="topbar-left">
-                <h2 id="pageTitle">Dashboard</h2>
-            </div>
-            <div class="topbar-right">
-                <span id="adminName" style="font-weight: 600; color: var(--sidebar-bg);"><i class="ph ph-user-circle"></i> Admin</span>
-                <button class="menu-open" id="menu-open"><i class="ph ph-list"></i></button>
-            </div>
-        </header>
-
         <section class="admin-content" id="adminContent">
+            <!-- Header Row (Simplified and near the navbar level) -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h2 id="pageTitle" style="margin:0; font-family: var(--font-heading);">Dashboard</h2>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span id="adminName" style="font-weight: 600; color: #1e293b;"><i class="ph ph-user-circle"></i> Admin</span>
+                    <button class="menu-open" id="menu-open" style="font-size: 1.5rem; background: none; border: none; cursor: pointer;"><i class="ph ph-list"></i></button>
+                </div>
+            </div>
             
             <!-- Dashboard View -->
             <div id="dashboard" class="section-view active">
