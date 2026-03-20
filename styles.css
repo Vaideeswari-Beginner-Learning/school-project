@@ -389,6 +389,22 @@ img { max-width: 100%; height: auto; display: block; }
 
 .admin-content { padding: 2rem; overflow-y: auto; flex: 1; }
 
+/* Responsive Utilities */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 15px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
 /* Admin Responsive */
 @media (max-width: 1024px) {
     .sidebar { position: fixed; left: -250px; height: 100%; }
@@ -400,4 +416,6 @@ img { max-width: 100%; height: auto; display: block; }
 
 @media (max-width: 640px) {
     .admin-content { padding: 1rem; }
+    .form-grid { grid-template-columns: 1fr; }
+    .topbar-left h2 { font-size: 1.1rem; }
 }

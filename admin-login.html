@@ -12,14 +12,13 @@
     <style>
         body {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
             font-family: 'Inter', sans-serif;
+            padding: 20px;
         }
         .login-card {
             background: white;
@@ -29,7 +28,6 @@
             width: 100%;
             max-width: 400px;
             text-align: center;
-            box-sizing: border-box;
         }
         .login-card .logo-area {
             font-family: 'Outfit', sans-serif;
@@ -44,7 +42,7 @@
         }
         .login-card h2 {
             margin-bottom: 30px;
-            color: var(--color-text);
+            color: var(--color-text-main);
         }
         .form-group {
             margin-bottom: 20px;
@@ -101,6 +99,19 @@
         .back-link:hover {
             color: var(--color-primary);
             text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 30px 20px;
+            }
+            .login-card .logo-area {
+                font-size: 1.5rem;
+            }
+            .login-card h2 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
