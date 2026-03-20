@@ -8,8 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/phosphor-icons"></script>
     <link rel="stylesheet" href="styles.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+        <div class="logo-icon"><i class="ph ph-planet"></i></div>
+    </div>
 
     <div class="app-container">
 
@@ -38,7 +45,7 @@
         </nav>
 
         <header class="page-header" style="background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(15,23,42,0.8)), url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=2000') center/cover;">
-            <div class="container relative reveal active">
+            <div class="container relative  active" data-aos="fade-up" data-aos-duration="1000">
                 <h1>Academic Programs</h1>
                 <p>Our academic curriculum focuses on building strong foundations in education while encouraging creativity, discipline, and critical thinking.</p>
             </div>
@@ -46,7 +53,7 @@
 
         <main class="container mb-lg">
             
-            <div class="timeline reveal">
+            <div class="timeline " data-aos="fade-up" data-aos-duration="1000">
                 <!-- Primary -->
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
@@ -110,6 +117,8 @@
 
     </div>
 
+        <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -8,9 +8,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/phosphor-icons"></script>
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+        <div class="logo-icon"><i class="ph ph-planet"></i></div>
+    </div>
 
     <div class="app-container">
 
@@ -41,12 +49,17 @@
 
         <!-- Hero Section -->
         <header class="home-hero">
-            <div class="container reveal active">
-                <h1 class="animate-up delay-1">Empowering the <span>Next Generation</span></h1>
-                <p class="animate-up delay-2">Excellence in Academics, Sports, and Space Sciences. Building leaders who shape the future with knowledge, discipline, and innovation.</p>
-                <div class="hero-actions animate-up delay-3">
-                    <a href="about.html" class="btn btn-primary">Discover More</a>
-                    <a href="contact.html" class="btn btn-outline">Apply Now</a>
+            <!-- Floating Background Shapes -->
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+            
+            <div class="container" data-aos="fade-in" data-aos-duration="1500">
+                <h1 class="hero-text-fade">Empowering the <span>Next Generation</span></h1>
+                <p class="hero-text-fade" style="animation-delay: 0.3s;">Excellence in Academics, Sports, and Space Sciences. Building leaders who shape the future with knowledge, discipline, and innovation.</p>
+                <div class="hero-actions hero-text-fade" style="animation-delay: 0.6s;">
+                    <a href="about.html" class="btn btn-primary glow-btn">Discover More</a>
+                    <a href="contact.html" class="btn btn-outline hero-img-zoom" style="animation-delay: 0.8s;">Apply Now</a>
                 </div>
             </div>
         </header>
@@ -55,47 +68,47 @@
         <main class="container mb-lg">
 
             <!-- Quick Stats -->
-            <section class="reveal">
-                <div class="stats-strip">
-                    <div class="stat-box">
+            <section data-aos="fade-up" data-aos-duration="1000" class="stats-counter-section">
+                <div class="stats-strip stats-banner-trigger">
+                    <div class="stat-box" data-aos="zoom-in" data-aos-delay="100">
                         <i class="ph ph-users-three"></i>
-                        <h3>1,250+</h3>
+                        <h3><span class="stat-num" data-target="1250">0</span>+</h3>
                         <p>Happy Students</p>
                     </div>
-                    <div class="stat-box">
+                    <div class="stat-box" data-aos="zoom-in" data-aos-delay="200">
                         <i class="ph ph-chalkboard-teacher"></i>
-                        <h3>80+</h3>
+                        <h3><span class="stat-num" data-target="80">0</span>+</h3>
                         <p>Expert Teachers</p>
                     </div>
-                    <div class="stat-box">
+                    <div class="stat-box" data-aos="zoom-in" data-aos-delay="300">
                         <i class="ph ph-trophy"></i>
-                        <h3>50+</h3>
+                        <h3><span class="stat-num" data-target="50">0</span>+</h3>
                         <p>Trophies Won</p>
                     </div>
-                    <div class="stat-box">
+                    <div class="stat-box" data-aos="zoom-in" data-aos-delay="400">
                         <i class="ph ph-medal"></i>
-                        <h3>98%</h3>
+                        <h3><span class="stat-num" data-target="98">0</span>%</h3>
                         <p>Pass Rate</p>
                     </div>
                 </div>
             </section>
 
             <!-- Why Choose Us -->
-            <section class="reveal">
+            <section data-aos="fade-up">
                 <h2 class="section-title">Why Choose Us?</h2>
                 <div class="title-line"></div>
                 <div class="features-grid">
-                    <div class="feature-card">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
                         <i class="ph-fill ph-books"></i>
                         <h4>Academic Excellence</h4>
                         <p>Comprehensive curriculum from Primary to Higher Secondary with experienced faculty and modern teaching methods.</p>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
                         <i class="ph-fill ph-soccer-ball"></i>
                         <h4>Sports & Games</h4>
                         <p>State-level champions in cricket, football, and athletics. Physical fitness is integral to our holistic education.</p>
                     </div>
-                    <div class="feature-card">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
                         <i class="ph-fill ph-rocket-launch"></i>
                         <h4>Space Sciences</h4>
                         <p>Explore the cosmos with our Space Sciences wing featuring an observatory, planetarium, and hands-on STEM labs.</p>
@@ -104,26 +117,26 @@
             </section>
 
             <!-- Campus Gallery -->
-            <section class="reveal">
+            <section data-aos="fade-in">
                 <h2 class="section-title">Campus Life <span style="color:var(--color-accent)">Gallery</span></h2>
                 <div class="title-line"></div>
 
                 <div class="gallery-preview">
-                    <img src="assets/campus_classroom.png" alt="Classroom">
-                    <img src="assets/campus_basketball.png" alt="Basketball">
-                    <img src="assets/campus_science_lab.png" alt="Science Lab">
-                    <img src="assets/school_football.png" alt="Football">
-                    <img src="assets/campus_graduation.png" alt="Graduation">
-                    <img src="assets/school_athletics.png" alt="Athletics Track">
+                    <img src="assets/campus_classroom.png" alt="Classroom" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="assets/campus_basketball.png" alt="Basketball" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="assets/campus_science_lab.png" alt="Science Lab" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="assets/school_football.png" alt="Football" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="assets/campus_graduation.png" alt="Graduation" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="assets/school_athletics.png" alt="Athletics Track" data-aos="zoom-in" data-aos-delay="300">
                 </div>
 
-                <div style="text-align: center;">
+                <div style="text-align: center; margin-top:2rem;" data-aos="fade-up">
                     <a href="gallery.html" class="btn btn-primary" style="display:inline-flex;">View Full Gallery</a>
                 </div>
             </section>
 
             <!-- CTA Banner -->
-            <section class="mt-lg reveal">
+            <section class="mt-lg" data-aos="zoom-in-up">
                 <div class="cta-banner">
                     <h2>Ready to Join Our Family?</h2>
                     <p>Admissions are now open for the 2026-2027 academic year. Secure your child's future with Richman Matric Hr. Sec. School.</p>
@@ -167,6 +180,8 @@
 
     </div>
 
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Scripts -->
     <script src="script.js"></script>
 </body>

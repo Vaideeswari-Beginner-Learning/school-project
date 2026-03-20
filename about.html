@@ -9,8 +9,15 @@
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/phosphor-icons"></script>
     <link rel="stylesheet" href="styles.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+        <div class="logo-icon"><i class="ph ph-planet"></i></div>
+    </div>
 
     <!-- Main App Container -->
     <div class="app-container">
@@ -51,14 +58,33 @@
         <main class="container mb-lg">
             
             <!-- Welcome / History -->
-            <section class="history-section reveal mb-lg text-center">
+            <section class="history-section  mb-lg text-center" data-aos="fade-up" data-aos-duration="1000">
                 <h2 style="font-size:2.5rem; margin-bottom: 20px;">Our History</h2>
                 <div style="width:60px; height:4px; background:var(--color-accent); margin:0 auto 20px;"></div>
                 <p>Founded in 1990, Richman Matric Hr. Sec. School began with a simple yet profound vision: to provide a holistic education that balances rigorous academics with elite sports and cutting-edge science. Over the last three decades, we have grown from a small institution to a sprawling state-of-the-art campus.</p>
             </section>
 
+            <!-- Infinite Sports Slider -->
+            <div class="sports-slider-container mb-lg">
+                <div class="sports-slider-track">
+                    <img src="assets/ai_athletics.png" alt="Athletics" class="slider-image">
+                    <img src="assets/ai_badminton.png" alt="Badminton" class="slider-image">
+                    <img src="assets/ai_basketball.png" alt="Basketball" class="slider-image">
+                    <img src="assets/ai_cricket.png" alt="Cricket" class="slider-image">
+                    <img src="assets/ai_football.png" alt="Football" class="slider-image">
+                    <img src="assets/ai_volleyball.png" alt="Volleyball" class="slider-image">
+                    <!-- Duplicate for infinite loop -->
+                    <img src="assets/ai_athletics.png" alt="Athletics" class="slider-image">
+                    <img src="assets/ai_badminton.png" alt="Badminton" class="slider-image">
+                    <img src="assets/ai_basketball.png" alt="Basketball" class="slider-image">
+                    <img src="assets/ai_cricket.png" alt="Cricket" class="slider-image">
+                    <img src="assets/ai_football.png" alt="Football" class="slider-image">
+                    <img src="assets/ai_volleyball.png" alt="Volleyball" class="slider-image">
+                </div>
+            </div>
+
             <!-- Vision, Mission, Management -->
-            <section class="grid-3 reveal">
+            <section class="grid-3 " data-aos="fade-up" data-aos-duration="1000">
                 <div class="info-card">
                     <i class="ph ph-eye" style="font-size: 40px; color:var(--color-primary);"></i>
                     <h4>Vision</h4>
@@ -77,7 +103,7 @@
             </section>
 
             <!-- Campus Information & Facilities -->
-            <section class="grid-layout mt-lg reveal">
+            <section class="grid-layout mt-lg " data-aos="fade-up" data-aos-duration="1000">
                 <div>
                     <img src="assets/school_playground.png" alt="Campus Building" style="border-radius:12px; box-shadow:var(--shadow-lg);">
                 </div>
@@ -94,7 +120,7 @@
             </section>
 
             <!-- Digital Infrastructure & Security -->
-            <section class="mt-lg reveal">
+            <section class="mt-lg " data-aos="fade-up" data-aos-duration="1000">
                 <div class="text-center" style="text-align: center;">
                     <h3 style="font-size: 2.2rem; margin-bottom: 20px;">Digital Infrastructure & Security</h3>
                     <div style="width:60px; height:4px; background:var(--color-accent); margin:0 auto 40px;"></div>
@@ -127,7 +153,7 @@
             </section>
 
             <!-- Teachers / Faculty -->
-            <section class="mt-lg reveal text-center">
+            <section class="mt-lg  text-center" data-aos="fade-up" data-aos-duration="1000">
                 <h3 style="font-size: 2.2rem; margin-bottom: 20px;">Master Teachers</h3>
                 <div style="width:60px; height:4px; background:var(--color-accent); margin:0 auto 40px;"></div>
                 
@@ -173,6 +199,8 @@
 
     </div>
 
+        <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

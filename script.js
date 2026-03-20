@@ -1,5 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Initialize AOS
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800
+        });
+    }
+
     // Sticky Navbar shadow on scroll
     const navbar = document.getElementById('navbar');
     
@@ -44,13 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                
-                // If the element has a counter, trigger it
-                if (entry.target.classList.contains('stats-banner')) {
-                    startCounters(entry.target);
-                }
-                
-                // Keep the 'active' class permanently once scrolled past
                 observer.unobserve(entry.target);
             }
         });
@@ -64,6 +66,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
     revealElements.forEach(el => revealObserver.observe(el));
+
+    // Dedicated Counter Observer (works with AOS or reveal)
+    const counterSections = document.querySelectorAll('.stats-banner, .stats-counter-section');
+    if (counterSections.length > 0) {
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    startCounters(entry.target);
+                    // Keep the observe if it's stats-banner without aos, but we generally want it once
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        
+        counterSections.forEach(section => counterObserver.observe(section));
+    }
 
     // Number Counter Animation Engine
     function startCounters(banner) {
@@ -97,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Search button interactivity
     const searchBtn = document.querySelector('.search-btn');
     if(searchBtn) {
         searchBtn.addEventListener('click', () => {
@@ -109,4 +126,54 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Lightbox Logic for Gallery
+    const galleryItems = document.querySelectorAll('.gallery-preview img, .full-gallery img');
+    if (galleryItems.length > 0) {
+        let overlay = document.getElementById('lightbox-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.id = 'lightbox-overlay';
+            overlay.innerHTML = `
+                <button id="lightbox-close"><i class="ph ph-x"></i></button>
+                <img id="lightbox-img" src="" alt="Enlarged Image">
+            `;
+            document.body.appendChild(overlay);
+        }
+
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.getElementById('lightbox-close');
+
+        galleryItems.forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                overlay.classList.add('active');
+            });
+        });
+
+        const closeLightbox = () => {
+            overlay.classList.remove('active');
+            setTimeout(() => { lightboxImg.src = ''; }, 300);
+        };
+
+        closeBtn.addEventListener('click', closeLightbox);
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && overlay.classList.contains('active')) closeLightbox();
+        });
+    }
+
+});
+
+// Global Preloader Listener
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    }
 });

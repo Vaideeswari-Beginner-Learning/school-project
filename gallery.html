@@ -9,8 +9,15 @@
     <script src="https://unpkg.com/phosphor-icons"></script>
     <link rel="stylesheet" href="styles.css">
     <script src="config.js"></script>
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+        <div class="logo-icon"><i class="ph ph-planet"></i></div>
+    </div>
 
     <div class="app-container">
 
@@ -45,7 +52,7 @@
             </div>
         </header>
 
-        <main class="container mb-lg reveal">
+        <main class="container mb-lg " data-aos="fade-up" data-aos-duration="1000">
             
             <div class="filter-btns">
                 <button class="filter-btn active" data-filter="all">All Photos</button>
@@ -94,6 +101,8 @@
 
     </div>
 
+        <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
     <script>
         // Load gallery images from backend API

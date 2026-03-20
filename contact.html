@@ -9,8 +9,15 @@
     <script src="https://unpkg.com/phosphor-icons"></script>
     <link rel="stylesheet" href="styles.css">
     <script src="config.js"></script>
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+        <div class="logo-icon"><i class="ph ph-planet"></i></div>
+    </div>
 
     <div class="app-container">
 
@@ -39,7 +46,7 @@
         </nav>
 
         <header class="page-header" style="background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(15,23,42,0.85)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=2000') center/cover;">
-            <div class="container relative reveal active">
+            <div class="container relative  active" data-aos="fade-up" data-aos-duration="1000">
                 <h1>Contact Us</h1>
                 <p>For admissions or general inquiries, please feel free to contact us. Our team will be happy to assist you.</p>
             </div>
@@ -47,7 +54,7 @@
 
         <main class="container mb-lg">
             
-            <div class="contact-grid reveal">
+            <div class="contact-grid " data-aos="fade-up" data-aos-duration="1000">
                 <!-- Contact Details -->
                 <div class="contact-info-card">
                     <h3>Get in Touch</h3>
@@ -157,7 +164,7 @@
             </div>
 
             <!-- Google Maps Embed -->
-            <section class="reveal">
+            <section class="" data-aos="fade-up" data-aos-duration="1000">
                 <h3 style="font-size: 2rem; margin-bottom: 20px; text-align: center;">Our Location</h3>
                 <div class="map-container">
                     <!-- Standard iframe embed for Salem, Tamil Nadu -->
@@ -181,6 +188,8 @@
 
     </div>
 
+        <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
