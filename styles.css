@@ -530,12 +530,12 @@ img { max-width: 100%; height: auto; display: block; }
     padding: 15px 20px;
     color: #cbd5e1;
     transition: 0.3s;
-    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
 }
 .sidebar-menu li a:hover, .sidebar-menu li a.active {
     background: #334155;
     color: white;
-    border-left-color: var(--color-accent);
+    border-right-color: var(--color-accent);
 }
 
 .sidebar-footer { padding: 20px; border-top: 1px solid #334155; }
@@ -588,8 +588,8 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* Admin Responsive */
 @media (max-width: 1024px) {
-    .sidebar { position: fixed; left: -250px; height: 100%; }
-    .sidebar.active { left: 0; }
+    .sidebar { position: fixed; right: -250px; left: auto; height: 100%; }
+    .sidebar.active { right: 0; left: auto; }
     .sidebar-close { display: block; }
     .menu-open { display: block; }
     .admin-topbar { padding: 15px; }
