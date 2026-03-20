@@ -423,9 +423,9 @@
             list.innerHTML = '';
             mockNews.forEach(item => {
                 list.innerHTML += `
-                    <li style="padding:15px; border:1px solid #e2e8f0; margin-bottom:10px; border-radius:8px; display:flex; justify-content:space-between; align-items:center;">
-                        <span>${item.text}</span>
-                        <div>
+                    <li style="padding:15px; border:1px solid #e2e8f0; margin-bottom:10px; border-radius:8px; display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap;">
+                        <span style="flex:1; min-width:0; word-break:break-word;">${item.text}</span>
+                        <div style="display:flex; gap:6px; flex-shrink:0;">
                             <button class="btn btn-primary btn-sm" onclick="editItem('news', ${item.id})">Edit</button>
                             <button class="btn btn-danger btn-sm" onclick="deleteItem('news', ${item.id})">Delete</button>
                         </div>

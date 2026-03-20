@@ -74,12 +74,15 @@ img { max-width: 100%; height: auto; display: block; }
 .nav-brand {
     font-family: 'Outfit';
     font-weight: 800;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     color: var(--color-primary);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 60px);
 }
 
 .nav-links { display: flex; gap: 1.5rem; }
@@ -196,9 +199,57 @@ img { max-width: 100%; height: auto; display: block; }
 /* Stats Strip */
 .stats-strip { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
     gap: 1.5rem; 
     margin-bottom: 4rem; 
+}
+
+/* Stats Banner (sports page) */
+.stats-banner {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    background: var(--color-primary);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 4rem;
+    text-align: center;
+}
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 120px;
+}
+.stat-icon { font-size: 2.5rem; color: var(--color-accent); }
+.stat-num { font-size: 2.5rem; font-weight: 800; font-family: var(--font-heading); }
+.stat-label { font-size: 0.95rem; opacity: 0.85; }
+
+/* Gallery filter buttons */
+.filter-btns {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+.filter-btn {
+    padding: 8px 18px;
+    border: 2px solid var(--color-primary);
+    border-radius: 30px;
+    background: white;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-family: var(--font-heading);
+}
+.filter-btn:hover, .filter-btn.active {
+    background: var(--color-primary);
+    color: white;
 }
 
 /* Gallery Styles */
@@ -279,6 +330,11 @@ img { max-width: 100%; height: auto; display: block; }
 
 @media (max-width: 768px) {
     .menu-toggle { display: flex; }
+
+    .nav-brand {
+        font-size: 0.95rem;
+        gap: 6px;
+    }
     
     .nav-links {
         position: fixed;
@@ -304,6 +360,9 @@ img { max-width: 100%; height: auto; display: block; }
     .timeline-content { width: calc(100% - 50px); margin-left: 50px; border-left: 4px solid var(--color-accent) !important; border-right: none !important; text-align: left !important; }
 
     .grid-layout { grid-template-columns: 1fr; }
+
+    .stats-banner { gap: 1.5rem; padding: 2rem 1rem; }
+    .stat-num { font-size: 2rem; }
 }
 
 @media (max-width: 480px) {
@@ -311,7 +370,8 @@ img { max-width: 100%; height: auto; display: block; }
     .home-hero h1 { font-size: 2.25rem; }
     .section-title { font-size: 1.75rem; }
     .hero-actions .btn { width: 100%; }
-    .stats-strip { grid-template-columns: 1fr; }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); }
+    .nav-brand { font-size: 0.85rem; }
 }
 
 /* Admin Dashboard Specific Styles */
