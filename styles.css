@@ -69,20 +69,21 @@ img { max-width: 100%; height: auto; display: block; }
     box-shadow: var(--shadow-sm); 
 }
 .navbar.scrolled { box-shadow: var(--shadow-lg); }
-.nav-inner { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+.nav-inner { display: flex; justify-content: space-between; align-items: center; height: 70px; padding: 0; gap: 10px; }
 
 .nav-brand {
     font-family: 'Outfit';
     font-weight: 800;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--color-primary);
     display: flex;
     align-items: center;
     gap: 8px;
-    white-space: nowrap;
+    flex-shrink: 1;
+    min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: calc(100% - 60px);
+    white-space: nowrap;
 }
 
 .nav-links { display: flex; gap: 1.5rem; }
@@ -107,6 +108,8 @@ img { max-width: 100%; height: auto; display: block; }
     z-index: 1001;
     background: none;
     border: none;
+    flex-shrink: 0;
+    padding: 4px;
 }
 .menu-toggle span {
     display: block;
@@ -231,12 +234,13 @@ img { max-width: 100%; height: auto; display: block; }
 /* Gallery filter buttons */
 .filter-btns {
     display: flex;
-    gap: 0.75rem;
+    gap: 10px;
     flex-wrap: wrap;
     margin-bottom: 2rem;
+    padding: 5px 0;
 }
 .filter-btn {
-    padding: 8px 18px;
+    padding: 9px 20px;
     border: 2px solid var(--color-primary);
     border-radius: 30px;
     background: white;
@@ -246,10 +250,13 @@ img { max-width: 100%; height: auto; display: block; }
     cursor: pointer;
     transition: var(--transition-smooth);
     font-family: var(--font-heading);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
 }
 .filter-btn:hover, .filter-btn.active {
     background: var(--color-primary);
     color: white;
+    box-shadow: var(--shadow-md);
 }
 
 /* Gallery Styles */
@@ -370,8 +377,14 @@ img { max-width: 100%; height: auto; display: block; }
     .home-hero h1 { font-size: 2.25rem; }
     .section-title { font-size: 1.75rem; }
     .hero-actions .btn { width: 100%; }
-    .stats-strip { grid-template-columns: repeat(2, 1fr); }
-    .nav-brand { font-size: 0.85rem; }
+    /* Force 1-column layout on very small screens */
+    .stats-strip { grid-template-columns: 1fr !important; }
+    .stats-banner { flex-direction: column; align-items: center; gap: 1.5rem; padding: 2rem 1rem; }
+    .stat-item { width: 100%; }
+    .nav-brand { font-size: 0.8rem; }
+    .nav-inner { height: auto; min-height: 60px; padding: 10px 0; }
+    .filter-btns { gap: 8px; }
+    .filter-btn { padding: 8px 16px; font-size: 0.85rem; }
 }
 
 /* Admin Dashboard Specific Styles */
