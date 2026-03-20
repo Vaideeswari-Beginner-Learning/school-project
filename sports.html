@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/phosphor-icons"></script>
     <link rel="stylesheet" href="styles.css">
+    <script src="config.js"></script>
 </head>
 <body>
 
@@ -194,7 +195,7 @@
         // Dynamically load sports from the backend API
         async function loadSportsFromAPI() {
             try {
-                const response = await fetch('/api/sports');
+                const response = await fetch(`${CONFIG.API_BASE}/sports`);
                 const sports = await response.json();
                 if (sports.length > 0) {
                     const grid = document.querySelector('.sports-grid');
