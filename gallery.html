@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/phosphor-icons"></script>
     <link rel="stylesheet" href="styles.css">
+    <script src="config.js"></script>
 </head>
 <body>
 
@@ -98,17 +99,22 @@
         // Load gallery images from backend API
         async function loadGalleryFromAPI() {
             try {
-                const response = await fetch('/api/gallery');
+                const response = await fetch(`${CONFIG.API_BASE}/gallery`);
                 const gallery = await response.json();
                 const container = document.getElementById('gallery-container');
-                gallery.forEach(item => {
+                
+                gallery.forEach((item, index) => {
                     const img = document.createElement('img');
                     img.src = item.img;
                     img.alt = item.title;
-                    img.className = 'gallery-item';
+                    img.className = 'gallery-item reveal';
+                    img.style.transitionDelay = `${index * 100}ms`;
                     img.dataset.category = (item.category || 'campus').toLowerCase();
                     img.onerror = function() { this.style.display = 'none'; };
+                    
+                    // Trigger animation after append
                     container.appendChild(img);
+                    setTimeout(() => img.classList.add('active'), 50);
                 });
             } catch (err) {
                 console.log('Could not load gallery from API:', err);
