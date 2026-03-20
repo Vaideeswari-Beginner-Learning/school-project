@@ -600,3 +600,65 @@ img { max-width: 100%; height: auto; display: block; }
     .form-grid { grid-template-columns: 1fr; }
     .topbar-left h2 { font-size: 1.1rem; }
 }
+
+/* Dashboard Specifics */
+.section-view { display: none; }
+.section-view.active { display: block; }
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border-left: 5px solid var(--color-primary);
+}
+
+.stat-card i {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+}
+
+.stat-card .info h3 { margin: 0; font-size: 1.75rem; color: var(--color-primary); }
+.stat-card .info p { margin: 0; color: var(--color-text-muted); font-size: 0.9rem; }
+
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+}
+
+.card h3 { margin-top: 0; margin-bottom: 1.5rem; font-size: 1.25rem; }
+
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--color-primary); }
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: inherit;
+    transition: var(--transition-smooth);
+}
+.form-group input:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1); }
+
+/* Admin Buttons */
+.btn-primary { background: var(--color-accent); color: var(--color-primary); }
+.btn-danger { background: var(--color-danger); color: white; }
+.btn-sm { padding: 6px 12px; font-size: 0.85rem; border-radius: 6px; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 1rem; border-bottom: 1px solid #f1f5f9; }
+th { background: #f8fafc; font-weight: 600; font-size: 0.9rem; color: #64748b; text-transform: uppercase; }
+td { font-size: 0.95rem; }
