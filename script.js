@@ -168,12 +168,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Global Preloader Listener
-window.addEventListener('load', () => {
+function hidePreloader() {
     const preloader = document.getElementById('preloader');
-    if (preloader) {
+    if (preloader && preloader.style.display !== 'none') {
         preloader.style.opacity = '0';
         setTimeout(() => {
             preloader.style.display = 'none';
         }, 500);
     }
-});
+}
+
+window.addEventListener('load', hidePreloader);
+// Safety fallback: if load takes more than 1.5s, force hide it
+setTimeout(hidePreloader, 1500);
