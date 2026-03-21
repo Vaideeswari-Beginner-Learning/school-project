@@ -136,39 +136,15 @@ img { max-width: 100%; height: auto; display: block; }
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(15,23,42,0.7)), url('assets/campus_classroom.png') center/cover no-repeat;
-    background-size: 200% 200%;
-    animation: gradientMove 15s ease infinite;
     margin-bottom: 4rem;
     position: relative;
     overflow: hidden;
 }
 
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Floating Shapes */
+/* Floating Shapes (Disabled based on feedback) */
 .floating-shape {
-    position: absolute;
-    background: rgba(245, 158, 11, 0.15);
-    border-radius: 50%;
-    animation: float 10s infinite ease-in-out alternate;
-    pointer-events: none;
-    z-index: 1;
+    display: none;
 }
-
-.shape-1 { width: 100px; height: 100px; top: 10%; left: 10%; animation-delay: 0s; }
-.shape-2 { width: 150px; height: 150px; bottom: 20%; right: 5%; animation-delay: 2s; }
-.shape-3 { width: 80px; height: 80px; top: 40%; right: 30%; animation-delay: 4s; }
-
-@keyframes float {
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(-40px) rotate(180deg); }
-}
-
-.home-hero .container { position: relative; z-index: 2; }
 
 .page-header h1, .home-hero h1 { color: white; font-size: clamp(2.5rem, 8vw, 3.5rem); margin-bottom: 1rem; line-height: 1.1; }
 .page-header p, .home-hero p { max-width: 800px; margin: 0 auto 2rem; font-size: clamp(1rem, 4vw, 1.25rem); opacity: 0.9; line-height: 1.6; }
@@ -509,9 +485,6 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 @media (max-width: 480px) {
-    .slider-image { width: 170px; height: 110px; }
-    .sports-slider-container::before, .sports-slider-container::after { width: 30px; }
-    
     .home-hero { padding: 4rem 0 3rem; }
     .home-hero h1 { font-size: 2.25rem; }
     .section-title { font-size: 1.75rem; }
@@ -758,9 +731,18 @@ td { font-size: 0.95rem; }
     100% { transform: translateX(calc(-50% - 15px)); }
 }
 
+@media (max-width: 1024px) {
+    .slider-image { width: 280px; height: 190px; }
+}
+
 @media (max-width: 768px) {
-    .slider-image { width: 240px; height: 160px; }
-    .sports-slider-container::before, .sports-slider-container::after { width: 60px; }
+    .slider-image { width: 220px; height: 150px; }
+    .sports-slider-container::before, .sports-slider-container::after { width: 40px; }
+}
+
+@media (max-width: 480px) {
+    .slider-image { width: 180px; height: 120px; }
+    .sports-slider-container::before, .sports-slider-container::after { width: 20px; }
 }
 
 /* --- New Animation & UI Enhancements --- */
