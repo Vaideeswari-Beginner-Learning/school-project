@@ -51,7 +51,7 @@ app.post('/api/login', (req, res) => {
     const { email, password } = req.body;
     console.log(`[AUTH] Login attempt: Email="${email}", Password="${password}"`);
     
-    if (email === 'admin@richmanschool.edu' && password === 'admin123') {
+    if (email === 'admin@Richmaanschool.edu' && password === 'admin123') {
         res.json({ success: true, token: 'mock-jwt-token' });
     } else {
         console.warn(`[AUTH] Failed login for: ${email}`);

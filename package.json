@@ -1,7 +1,7 @@
 {
   "name": "school-project-backend",
   "version": "1.0.0",
-  "description": "Backend for Richman Matric Hr. Sec. School Project",
+  "description": "Backend for Richmaan Matric Hr. Sec. School Project",
   "main": "backend.js",
   "scripts": {
     "start": "node backend.js",
